@@ -1,3 +1,7 @@
+"""
+URL configuration for the School API project.
+"""
+
 from django.contrib import admin
 from django.urls import include, path
 
@@ -11,7 +15,12 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
+from .views import home
+
+
 urlpatterns = [
+    path("", home, name="home"),
+
     path("admin/", admin.site.urls),
 
     path("api/", include("school.urls")),

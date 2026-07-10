@@ -1,38 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>School API</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
 
     <style>
-
-        body{
-            background:#f5f7fb;
+        body {
+            background: linear-gradient(135deg, #eef4ff, #f8fbff);
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        .hero{
-            padding:80px 0;
+        .hero {
+            padding: 70px 0;
         }
 
-        .card{
-            border:none;
-            border-radius:18px;
-            transition:.3s;
+        .card {
+            border: none;
+            border-radius: 18px;
+            transition: .35s;
         }
 
-        .card:hover{
-            transform:translateY(-6px);
-            box-shadow:0 10px 25px rgba(0,0,0,.15);
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, .15);
         }
 
-        footer{
-            margin-top:80px;
-            color:#888;
+        .card h3 {
+            font-size: 48px;
         }
 
+        .btn {
+            border-radius: 10px;
+        }
+
+        .feature-box {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+        }
+
+        footer {
+            margin-top: 60px;
+            color: #666;
+        }
     </style>
 
 </head>
@@ -41,176 +63,255 @@
 
 <div class="container hero">
 
-<div class="text-center">
+    <div class="text-center">
 
-<h1 class="display-3 fw-bold">
-🎓 School API
-</h1>
+        <h1 class="display-2 fw-bold">
+            🎓 School API
+        </h1>
 
-<p class="lead mt-3">
+        <span class="badge bg-primary fs-5">
+            Version 1.0.0
+        </span>
 
-REST API built with Django REST Framework
+        <p class="lead mt-4">
+            REST API built with Django REST Framework
+        </p>
 
-</p>
+        <p class="fs-5">
+            Manage teachers, students, courses, enrollments and grades
+            using JWT Authentication.
+        </p>
 
-<p>
+    </div>
 
-Manage teachers, students, courses,
-enrollments and grades.
+    <div class="feature-box mt-5">
 
-</p>
+        <h3 class="text-center mb-4">
+            🚀 Features
+        </h3>
 
-</div>
+        <div class="row text-center">
 
-<div class="row mt-5 g-4">
+            <div class="col-md-4 mb-3">
+                ✅ JWT Authentication
+            </div>
 
-<div class="col-md-4">
+            <div class="col-md-4 mb-3">
+                🔍 Search
+            </div>
 
-<div class="card shadow">
+            <div class="col-md-4 mb-3">
+                🔎 Filtering
+            </div>
 
-<div class="card-body text-center">
+            <div class="col-md-4 mb-3">
+                ↕ Ordering
+            </div>
 
-<h3>👨‍🏫</h3>
+            <div class="col-md-4 mb-3">
+                📄 Pagination
+            </div>
 
-<h4>Teachers</h4>
+            <div class="col-md-4 mb-3">
+                📚 Swagger Documentation
+            </div>
 
-<a href="/api/teachers/" class="btn btn-primary mt-3">
+        </div>
 
-Open
+    </div>
 
-</a>
+    <div class="row mt-5 g-4">
 
-</div>
+        <div class="col-lg-4">
 
-</div>
+            <div class="card shadow">
 
-</div>
+                <div class="card-body text-center">
 
-<div class="col-md-4">
+                    <h3>👨‍🏫</h3>
 
-<div class="card shadow">
+                    <h4>Teachers</h4>
 
-<div class="card-body text-center">
+                    <p>Manage teachers.</p>
 
-<h3>👨‍🎓</h3>
+                    <a
+                        href="/api/teachers/"
+                        class="btn btn-primary"
+                    >
+                        Open
+                    </a>
 
-<h4>Students</h4>
+                </div>
 
-<a href="/api/students/" class="btn btn-success mt-3">
+            </div>
 
-Open
+        </div>
 
-</a>
+        <div class="col-lg-4">
 
-</div>
+            <div class="card shadow">
 
-</div>
+                <div class="card-body text-center">
 
-</div>
+                    <h3>👨‍🎓</h3>
 
-<div class="col-md-4">
+                    <h4>Students</h4>
 
-<div class="card shadow">
+                    <p>Manage students.</p>
 
-<div class="card-body text-center">
+                    <a
+                        href="/api/students/"
+                        class="btn btn-success"
+                    >
+                        Open
+                    </a>
 
-<h3>📚</h3>
+                </div>
 
-<h4>Courses</h4>
+            </div>
 
-<a href="/api/courses/" class="btn btn-warning mt-3">
+        </div>
 
-Open
+        <div class="col-lg-4">
 
-</a>
+            <div class="card shadow">
 
-</div>
+                <div class="card-body text-center">
 
-</div>
+                    <h3>📚</h3>
 
-</div>
+                    <h4>Courses</h4>
 
-<div class="col-md-6">
+                    <p>Manage courses.</p>
 
-<div class="card shadow">
+                    <a
+                        href="/api/courses/"
+                        class="btn btn-warning"
+                    >
+                        Open
+                    </a>
 
-<div class="card-body text-center">
+                </div>
 
-<h3>📝</h3>
+            </div>
 
-<h4>Enrollments</h4>
+        </div>
 
-<a href="/api/enrollments/" class="btn btn-info mt-3">
+        <div class="col-lg-6">
 
-Open
+            <div class="card shadow">
 
-</a>
+                <div class="card-body text-center">
 
-</div>
+                    <h3>📝</h3>
 
-</div>
+                    <h4>Enrollments</h4>
 
-</div>
+                    <p>Manage enrollments.</p>
 
-<div class="col-md-6">
+                    <a
+                        href="/api/enrollments/"
+                        class="btn btn-info"
+                    >
+                        Open
+                    </a>
 
-<div class="card shadow">
+                </div>
 
-<div class="card-body text-center">
+            </div>
 
-<h3>🏆</h3>
+        </div>
 
-<h4>Grades</h4>
+        <div class="col-lg-6">
 
-<a href="/api/grades/" class="btn btn-danger mt-3">
+            <div class="card shadow">
 
-Open
+                <div class="card-body text-center">
 
-</a>
+                    <h3>🏆</h3>
 
-</div>
+                    <h4>Grades</h4>
 
-</div>
+                    <p>Manage grades.</p>
 
-</div>
+                    <a
+                        href="/api/grades/"
+                        class="btn btn-danger"
+                    >
+                        Open
+                    </a>
 
-</div>
+                </div>
 
-<div class="text-center mt-5">
+            </div>
 
-<a href="/api/" class="btn btn-dark btn-lg">
+        </div>
 
-API Root
+    </div>
 
-</a>
+    <div class="text-center mt-5">
 
-<a href="/api/doc/swagger/" class="btn btn-primary btn-lg">
+        <a
+            href="/api/"
+            class="btn btn-dark btn-lg m-2"
+        >
+            API Root
+        </a>
 
-Swagger
+        <a
+            href="/api/doc/swagger/"
+            class="btn btn-primary btn-lg m-2"
+        >
+            Swagger UI
+        </a>
 
-</a>
+        <a
+            href="/api/schema/"
+            class="btn btn-success btn-lg m-2"
+        >
+            OpenAPI Schema
+        </a>
 
-<a href="/admin/" class="btn btn-secondary btn-lg">
+        <a
+            href="/api/token/"
+            class="btn btn-warning btn-lg m-2"
+        >
+            JWT Token
+        </a>
 
-Admin
+        <a
+            href="/admin/"
+            class="btn btn-secondary btn-lg m-2"
+        >
+            Django Admin
+        </a>
 
-</a>
+    </div>
 
-</div>
+    <footer class="text-center">
 
-<footer class="text-center">
+        <hr>
 
-<hr>
+        <h4>
+            School API Portfolio Project
+        </h4>
 
-<p>
+        <p>
+            Built with Django REST Framework
+        </p>
 
-School API • Django REST Framework • Version 1.0.0
+        <p>
+            Version 1.0.0
+        </p>
 
-</p>
+        <small>
+            © 2026 Matheus Araujo Nascimento
+        </small>
 
-</footer>
+    </footer>
 
 </div>
 
 </body>
+
 </html>
