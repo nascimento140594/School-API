@@ -10,6 +10,12 @@ from .models import (
     Student,
     Teacher,
 )
+
+from .permissions import (
+    IsAdminOrTeacher,
+    IsAdminOrTeacherReadOnly,
+)
+
 from .serializers import (
     CourseSerializer,
     EnrollmentSerializer,
@@ -54,6 +60,7 @@ class TeacherViewSet(viewsets.ModelViewSet):
 
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
+    permission_classes = [IsAdminOrTeacherReadOnly]
 
     filterset_fields = [
         "hire_date",
@@ -86,6 +93,7 @@ class StudentViewSet(viewsets.ModelViewSet):
 
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    permission_classes = [IsAdminOrTeacher]
 
     filterset_fields = [
         "birth_date",
@@ -118,6 +126,7 @@ class CourseViewSet(viewsets.ModelViewSet):
 
     queryset = Course.objects.select_related("teacher").all()
     serializer_class = CourseSerializer
+    permission_classes = [IsAdminOrTeacher]
 
     filterset_fields = [
         "teacher",
@@ -150,6 +159,7 @@ class EnrollmentViewSet(viewsets.ModelViewSet):
     ).all()
 
     serializer_class = EnrollmentSerializer
+    permission_classes = [IsAdminOrTeacher]
 
     filterset_fields = [
         "student",
@@ -183,6 +193,7 @@ class GradeViewSet(viewsets.ModelViewSet):
     ).all()
 
     serializer_class = GradeSerializer
+    permission_classes = [IsAdminOrTeacher]
 
     filterset_fields = [
         "status",

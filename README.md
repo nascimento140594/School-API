@@ -1,24 +1,26 @@
 # 🎓 School API
 
-REST API for school management built with **Django REST Framework**.
+A RESTful API built with **Django REST Framework** for managing a school system.
 
-This project provides a secure RESTful API for managing teachers, students, courses, enrollments, and grades using **JWT Authentication**. It also includes filtering, searching, ordering, pagination, and interactive API documentation with Swagger.
+This project provides complete CRUD operations for teachers, students, courses, enrollments, and grades using **JWT Authentication**. It also includes **Swagger/OpenAPI documentation**, **Filtering**, **Searching**, **Ordering**, **Pagination**, **Custom Permissions**, and **Automated Tests**.
 
 ---
 
 # 🚀 Features
 
-- Teacher management
-- Student management
-- Course management
-- Student enrollments
-- Grade management
-- JWT Authentication
-- Filtering
-- Search
-- Ordering
-- Pagination
-- Swagger Documentation (OpenAPI)
+- 🔐 JWT Authentication
+- 👨‍🏫 Teacher Management
+- 👨‍🎓 Student Management
+- 📚 Course Management
+- 📝 Enrollment Management
+- 🏆 Grade Management
+- 🔍 Filtering
+- 🔎 Searching
+- ↕ Ordering
+- 📄 Pagination
+- 🔒 Custom Permissions
+- 🧪 Automated Tests
+- 📘 Swagger / OpenAPI Documentation
 
 ---
 
@@ -28,33 +30,33 @@ This project provides a secure RESTful API for managing teachers, students, cour
 - Django 5
 - Django REST Framework
 - Simple JWT
-- drf-spectacular
-- django-filter
-- SQLite
+- DRF Spectacular
+- Django Filter
+- SQLite3
 
 ---
 
 # 📦 Installation
 
-## Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/nascimento140594/school-api.git
 ```
 
-## Enter the project
+Navigate to the project directory:
 
 ```bash
 cd school-api
 ```
 
-## Create a virtual environment
+Create a virtual environment:
 
 ```bash
 python -m venv .venv
 ```
 
-## Activate the virtual environment
+Activate the virtual environment.
 
 ### Windows
 
@@ -68,31 +70,31 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-## Install dependencies
+Install the dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Apply database migrations
+Apply database migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-## Create a superuser
+Create a superuser:
 
 ```bash
 python manage.py createsuperuser
 ```
 
-## Run the development server
+Run the development server:
 
 ```bash
 python manage.py runserver
 ```
 
-The API will be available at:
+The application will be available at:
 
 ```
 http://127.0.0.1:8000/
@@ -104,108 +106,35 @@ http://127.0.0.1:8000/
 
 The API uses **JWT Authentication**.
 
-## Obtain an Access Token
+Generate an access token:
 
 ```http
 POST /api/token/
 ```
 
-Example request:
-
-```json
-{
-    "username": "your_username",
-    "password": "your_password"
-}
-```
-
-Example response:
-
-```json
-{
-    "refresh": "<refresh_token>",
-    "access": "<access_token>"
-}
-```
-
-## Refresh Access Token
+Refresh the access token:
 
 ```http
 POST /api/token/refresh/
 ```
 
-Example request:
-
-```json
-{
-    "refresh": "<refresh_token>"
-}
-```
-
-Authorization header:
+Use the token in authenticated requests:
 
 ```
-Bearer YOUR_ACCESS_TOKEN
+Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
 ---
 
 # 📚 API Endpoints
 
-## Teachers
-
-```http
-GET     /api/teachers/
-POST    /api/teachers/
-GET     /api/teachers/{id}/
-PUT     /api/teachers/{id}/
-PATCH   /api/teachers/{id}/
-DELETE  /api/teachers/{id}/
-```
-
-## Students
-
-```http
-GET     /api/students/
-POST    /api/students/
-GET     /api/students/{id}/
-PUT     /api/students/{id}/
-PATCH   /api/students/{id}/
-DELETE  /api/students/{id}/
-```
-
-## Courses
-
-```http
-GET     /api/courses/
-POST    /api/courses/
-GET     /api/courses/{id}/
-PUT     /api/courses/{id}/
-PATCH   /api/courses/{id}/
-DELETE  /api/courses/{id}/
-```
-
-## Enrollments
-
-```http
-GET     /api/enrollments/
-POST    /api/enrollments/
-GET     /api/enrollments/{id}/
-PUT     /api/enrollments/{id}/
-PATCH   /api/enrollments/{id}/
-DELETE  /api/enrollments/{id}/
-```
-
-## Grades
-
-```http
-GET     /api/grades/
-POST    /api/grades/
-GET     /api/grades/{id}/
-PUT     /api/grades/{id}/
-PATCH   /api/grades/{id}/
-DELETE  /api/grades/{id}/
-```
+| Endpoint | Description |
+|----------|-------------|
+| `/api/teachers/` | Teacher CRUD |
+| `/api/students/` | Student CRUD |
+| `/api/courses/` | Course CRUD |
+| `/api/enrollments/` | Enrollment CRUD |
+| `/api/grades/` | Grade CRUD |
 
 ---
 
@@ -215,24 +144,44 @@ Examples:
 
 ```http
 GET /api/teachers/?email=john@email.com
+```
 
-GET /api/students/?birth_date=2005-10-10
+```http
+GET /api/students/?birth_date=2005-04-15
+```
 
+```http
 GET /api/courses/?teacher=1
+```
+
+```http
+GET /api/enrollments/?course=1
+```
+
+```http
+GET /api/grades/?status=PASSED
 ```
 
 ---
 
-# 🔍 Search
+# 🔍 Searching
 
 Examples:
 
 ```http
 GET /api/teachers/?search=john
+```
 
-GET /api/students/?search=maria
+```http
+GET /api/students/?search=pedro
+```
 
+```http
 GET /api/courses/?search=python
+```
+
+```http
+GET /api/grades/?search=pedro
 ```
 
 ---
@@ -242,75 +191,121 @@ GET /api/courses/?search=python
 Examples:
 
 ```http
-GET /api/teachers/?ordering=last_name
+GET /api/teachers/?ordering=first_name
+```
 
-GET /api/students/?ordering=-birth_date
+```http
+GET /api/students/?ordering=last_name
+```
 
+```http
+GET /api/courses/?ordering=name
+```
+
+```http
 GET /api/grades/?ordering=-score
+```
+
+---
+
+# 📄 Pagination
+
+Example:
+
+```http
+GET /api/teachers/?page=1
 ```
 
 ---
 
 # 📖 API Documentation
 
-## Swagger UI
+Swagger UI:
 
 ```
 http://127.0.0.1:8000/api/doc/swagger/
 ```
 
-Interactive documentation where you can authenticate and test every endpoint.
-
-## OpenAPI Schema
+OpenAPI Schema:
 
 ```
 http://127.0.0.1:8000/api/schema/
 ```
 
-Machine-readable OpenAPI schema generated by drf-spectacular.
-
 ---
 
 # 📷 Screenshots
 
-Place the screenshots inside the folder:
+## 🏠 Home Page
 
-```
-docs/images/
-```
+![Home Page](images/home-page.png)
 
-Recommended screenshots:
+---
 
-- Swagger UI
-- API Root
-- Teachers
-- Students
-- Courses
-- Enrollments
-- Grades
+## 📘 Swagger UI
 
-Example:
+![Swagger UI](images/swagger-ui.png)
 
-```md
-![Swagger](docs/images/swagger.png)
+---
 
-![Teachers](docs/images/teachers.png)
-```
+## 🔐 JWT Authentication
+
+![JWT Authentication](images/jwt-authentication.png)
+
+---
+
+## 👨‍🏫 Teachers API
+
+![Teachers API](images/teachers-api.png)
+
+---
+
+## 👨‍🎓 Students API
+
+![Students API](images/students-api.png)
+
+---
+
+## 📚 Courses API
+
+![Courses API](images/courses-api.png)
+
+---
+
+## 📝 Enrollments API
+
+![Enrollments API](images/enrollments-api.png)
+
+---
+
+## 🏆 Grades API
+
+![Grades API](images/grades-api.png)
 
 ---
 
 # 🗄 Database Diagram
 
-Create the database diagram using **Draw.io** and save it as:
+![Database Diagram](images/database-diagram.png)
 
+---
+
+# 🧪 Running Tests
+
+Run all tests:
+
+```bash
+python manage.py test
 ```
-docs/database-diagram.png
-```
 
-Example:
+Example output:
 
-```md
-![Database Diagram](docs/database-diagram.png)
+```text
+Found 9 test(s).
+
+Ran 9 tests in 2.467s
+
+OK
 ```
 
 ---
@@ -323,6 +318,7 @@ school-api/
 ├── config/
 ├── school/
 │   ├── migrations/
+│   ├── tests/
 │   ├── admin.py
 │   ├── models.py
 │   ├── permissions.py
@@ -330,18 +326,18 @@ school-api/
 │   ├── urls.py
 │   └── views.py
 │
-├── templates/
-├── docs/
-│   ├── images/
-│   │   ├── swagger.png
-│   │   ├── api-root.png
-│   │   ├── teachers.png
-│   │   ├── students.png
-│   │   ├── courses.png
-│   │   ├── enrollments.png
-│   │   └── grades.png
+├── images/
+│   ├── home-page.png
+│   ├── swagger-ui.png
+│   ├── jwt-authentication.png
+│   ├── teachers-api.png
+│   ├── students-api.png
+│   ├── courses-api.png
+│   ├── enrollments-api.png
+│   ├── grades-api.png
 │   └── database-diagram.png
 │
+├── templates/
 ├── manage.py
 ├── requirements.txt
 ├── README.md
@@ -352,11 +348,12 @@ school-api/
 
 # ✅ Code Quality
 
-This project was validated with:
+The project was validated using:
 
 - flake8
 - Django System Check
 - Django Migrations Check
+- Automated API Tests
 
 Commands:
 
@@ -366,23 +363,31 @@ python -m flake8
 python manage.py check
 
 python manage.py makemigrations --check
+
+python manage.py test
 ```
 
 ---
 
 # 📌 Future Improvements
 
-- Add automated API tests.
-- Docker support.
-- PostgreSQL configuration.
-- CI/CD with GitHub Actions.
+- Docker support
+- PostgreSQL integration
+- CI/CD with GitHub Actions
+- Increase automated test coverage
 
 ---
 
 # 👨‍💻 Author
 
-**Matheus Araujo Nascimento**
+**Matheus Araújo Nascimento**
 
-GitHub:
+📧 Email: **nascimento140594@gmail.com**
 
-https://github.com/nascimento140594
+🐙 GitHub: https://github.com/nascimento140594
+
+---
+
+## 📄 License
+
+This project was developed for educational and portfolio purposes.
