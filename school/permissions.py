@@ -16,34 +16,6 @@ class IsAdmin(BasePermission):
         )
 
 
-class IsTeacher(BasePermission):
-    """
-    Allows access to users in the Teachers group.
-    """
-
-    def has_permission(self, request, view):
-        return (
-            request.user.is_authenticated
-            and request.user.groups.filter(
-                name="Teachers"
-            ).exists()
-        )
-
-
-class IsStudent(BasePermission):
-    """
-    Allows access to users in the Students group.
-    """
-
-    def has_permission(self, request, view):
-        return (
-            request.user.is_authenticated
-            and request.user.groups.filter(
-                name="Students"
-            ).exists()
-        )
-
-
 class IsAdminOrTeacherReadOnly(BasePermission):
     """
     Admin:
